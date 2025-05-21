@@ -1,5 +1,5 @@
 const AIChatPanel = () => {
-    return <div className="col-span-4"></div>
+    return <div className="col-span-3"></div>
 }
 
 export default AIChatPanel

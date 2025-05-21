@@ -4,7 +4,7 @@ import InboxPanel from "./components/InboxPanel";
 
 function App() {
   return (
-    <div className="grid grid-cols-10 font-inter h-screen">
+    <div className="grid grid-cols-10 font-inter h-screen overflow-hidden">
       <InboxPanel />
       <Chatbox />
       <AIChatPanel />
