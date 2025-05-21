@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import ChatReplyBox from "./ChatReplyBox";
 
 const Chatbox = () => {
   const textareaRef = useRef(null);
@@ -11,8 +12,8 @@ const Chatbox = () => {
     }
   };
   return (
-    <div className="relative overflow-auto col-span-5 px-2 h-screen py-2 ">
-      <div className="absolute bg-white top-0 left-0 w-full flex items-center justify-between px-4">
+    <div className="relative overflow-y-hidden col-span-5 px-2 h-screen py-2 ">
+      <div className="bg-white top-0 left-0 w-full flex items-center justify-between px-4">
         <div className="text-2xl font-semibold text-black">Luis Easton</div>
         <div className="flex items-center gap-3 mt-2 justify-end">
           <div className="rounded-lg px-1 py-2">
@@ -94,8 +95,91 @@ const Chatbox = () => {
           </button>
         </div>
       </div>
-      <div className=" absolute bottom-0 left-0 px-4 py-4 w-full bg-white ">
-        <div className="px-4 py-2 rounded-lg  shadow-2xl ">
+      <div className="mt-12 pb-52 h-9/10 z-0 overflow-y-auto space-y-6 no-scrollbar">
+        <ChatReplyBox user="admin">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox user="admin">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox user="admin">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox user="admin">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+        <ChatReplyBox user="admin">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </ChatReplyBox>
+      </div>
+      <div className=" z-1 absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
+        <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
           <div className="flex py-1 gap-1 items-center ">
             <svg
               className="w-3 h-3"
@@ -198,8 +282,25 @@ const Chatbox = () => {
               </svg>
             </div>
             <div className="flex divide-x-2 rounded-4xl items-center py-2 px-4 border-2 divide-gray-300">
-                <button className="px-2 text-gray-500 font-bold">Send</button>
-                <svg className=" ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="512" height="298" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 512 298.04"><path fillRule="nonzero" d="M12.08 70.78c-16.17-16.24-16.09-42.54.15-58.7 16.25-16.17 42.54-16.09 58.71.15L256 197.76 441.06 12.23c16.17-16.24 42.46-16.32 58.71-.15 16.24 16.16 16.32 42.46.15 58.7L285.27 285.96c-16.24 16.17-42.54 16.09-58.7-.15L12.08 70.78z"/></svg>
+              <button className="px-2 text-gray-500 font-bold">Send</button>
+              <svg
+                className=" ml-2 w-4 h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlSpace="preserve"
+                width="512"
+                height="298"
+                shapeRendering="geometricPrecision"
+                textRendering="geometricPrecision"
+                imageRendering="optimizeQuality"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                viewBox="0 0 512 298.04"
+              >
+                <path
+                  fillRule="nonzero"
+                  d="M12.08 70.78c-16.17-16.24-16.09-42.54.15-58.7 16.25-16.17 42.54-16.09 58.71.15L256 197.76 441.06 12.23c16.17-16.24 42.46-16.32 58.71-.15 16.24 16.16 16.32 42.46.15 58.7L285.27 285.96c-16.24 16.17-42.54 16.09-58.7-.15L12.08 70.78z"
+                />
+              </svg>
             </div>
           </div>
         </div>
