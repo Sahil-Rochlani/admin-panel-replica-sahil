@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import AIChatReplyComponent from "./AIChatReplyComponent";
+import AdminDetailsPanel from "./AdminDetailsPanel";
 
-const AIChatPanel = () => {
+const AIChatAndDetailsPanel = () => {
   const [tab, setTab] = useState(1);
   const [messages, setMessages] = useState([])
   const [AIChatBoxValue, setAIChatBoxValue] = useState('')
@@ -125,7 +126,7 @@ const AIChatPanel = () => {
               </span>
             </div>
           </div>}
-          {messages.length > 0 && <div ref={MessageListRef} className="h-8/10 flex flex-col overflow-y-auto no-scrollbar">
+          {messages.length > 0 && <div ref={MessageListRef} className="scroll-smooth h-19/20 pb-28 flex flex-col overflow-y-auto no-scrollbar">
                 {messages.map((message, index) => (<AIChatReplyComponent key={index} sender={message.sender}>{message.message}</AIChatReplyComponent>))}
                 
             </div>
@@ -145,20 +146,19 @@ const AIChatPanel = () => {
               <div onClick={handleAIChatSend} className={`absolute right-2.5 rounded-lg px-1.5 py-0.5 top-1/2 -translate-y-1/2 ${AIChatBoxValue.trim() == '' ? 'cursor-not-allowed bg-gray-200' : 'cursor-pointer bg-black'}`}>
                 <button disabled={AIChatBoxValue.trim() == ''} className="disabled:pointer-events-none outline-none cursor-pointer ">
                     <svg className={`w-4 h-4 ${AIChatBoxValue.trim() == '' ? 'fill-gray-600' : 'fill-white'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 404 511.5" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd"><path fillRule="nonzero" d="M219.24 72.97l.54 438.53h-34.95l-.55-442.88L25.77 241.96 0 218.39 199.73 0 404 222.89l-25.77 23.58z"/></svg>
-                    {/* <svg className={`w-4 h-4 ${AIChatBoxValue.trim() == '' ? 'fill-gray-600' : 'fill-white'}`} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M486.4 263.509333l-175.7184 175.7184a25.6 25.6 0 1 1-36.181333-36.215466l219.409066-219.409067a25.6 25.6 0 0 1 36.181334 0l219.4432 219.409067a25.6 25.6 0 0 1-36.215467 36.181333L537.6 263.509333v574.293334a25.6 25.6 0 1 1-51.2 0V263.509333z"/></svg> */}
                 </button>
               </div>
             </div>
           </div>
         </div>}
         {tab == 2 && <div
-          className={`h-full w-full`}
+          className={`h-9/10 w-full overflow-y-auto no-scrollbar`}
         >
-          <div className="text-black text-xl">hi there</div>
+          <AdminDetailsPanel />
         </div>}
       </div>
     </div>
   );
 };
 
-export default AIChatPanel;
+export default AIChatAndDetailsPanel;

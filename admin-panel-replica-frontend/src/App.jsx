@@ -1,4 +1,4 @@
-import AIChatPanel from "./components/AIChatPanel";
+import AIChatAndDetailsPanel from "./components/AIChatAndDetailsPanel";
 import CustomerChatPanel from "./components/CustomerChatPanel";
 import InboxPanel from "./components/InboxPanel";
 
@@ -7,7 +7,7 @@ function App() {
     <div className="grid grid-cols-10 font-inter h-screen overflow-hidden">
       <InboxPanel />
       <CustomerChatPanel />
-      <AIChatPanel />
+      <AIChatAndDetailsPanel />
     </div>
   );
 }

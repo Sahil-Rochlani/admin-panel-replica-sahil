@@ -100,7 +100,7 @@ const CustomerChatPanel = () => {
           </button>
         </div>
       </div>
-      <div className="pt-4 h-13/20 z-0 overflow-y-auto space-y-6 no-scrollbar">
+      <div className="pt-4 h-19/20 pb-48 scroll-smooth overflow-y-auto space-y-6 no-scrollbar">
         <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
