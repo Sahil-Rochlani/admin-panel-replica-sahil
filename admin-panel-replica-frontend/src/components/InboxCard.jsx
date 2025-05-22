@@ -5,8 +5,8 @@ const InboxCard = ({visited}) => {
         </div>
         <div className="w-[80%] xl:w-[100%] ">
             <div className="text-gray-500">Luis Easton</div>
-            <div className="flex justify-between w-[100%] pr-5 text-gray-400 text-sm">
-                <p className="truncate max-w-38">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <div className="flex justify-between w-[100%] pr-5 xl:pr-3 text-gray-400 text-sm">
+                <p className="truncate max-w-38 xl:max-w-40">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 <div>45m</div>
             </div>
         </div>

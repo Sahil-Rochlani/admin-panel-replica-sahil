@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ChatReplyBox from "./ChatReplyBox";
 
 const Chatbox = () => {
+    const [chatboxValue, setChatBoxValue] = useState('')
   const textareaRef = useRef(null);
 
   const handleInput = () => {
@@ -10,12 +11,16 @@ const Chatbox = () => {
       el.style.height = "auto";
       el.style.height = `${el.scrollHeight}px`;
     }
-  };
+  }
+  const handleOnChange = (e) => {
+    const value = e.target.value
+    setChatBoxValue(value)
+  }
   return (
-    <div className="relative overflow-y-hidden col-span-5 px-2 h-screen py-2 ">
-      <div className="bg-white top-0 left-0 w-full flex items-center justify-between px-4">
+    <div className="relative overflow-y-hidden col-span-5 h-screen py-2  border-r-1 border-gray-300">
+      <div className="bg-white w-full flex items-center py-1 justify-between px-6 border-b-1 border-gray-300">
         <div className="text-2xl font-semibold text-black">Luis Easton</div>
-        <div className="flex items-center gap-3 mt-2 justify-end">
+        <div className="flex items-center gap-3 justify-end">
           <div className="rounded-lg px-1 py-2">
             <svg
               className="w-6 h-6"
@@ -60,7 +65,7 @@ const Chatbox = () => {
               />
             </svg>
           </div>
-          <button className=" outline-none flex justify-center items=center gap-1 bg-black text-white rounded-xl py-2 px-3">
+          <button className=" outline-none flex justify-center items=center gap-1 bg-black text-white rounded-xl py-1 px-3">
             <svg
               className="w-3 h-3 translate-y-1.5"
               width="800"
@@ -95,7 +100,7 @@ const Chatbox = () => {
           </button>
         </div>
       </div>
-      <div className="mt-12 pb-52 h-9/10 z-0 overflow-y-auto space-y-6 no-scrollbar">
+      <div className="pt-4 h-13/20 z-0 overflow-y-auto space-y-6 no-scrollbar">
         <ChatReplyBox user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -177,6 +182,10 @@ const Chatbox = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </ChatReplyBox>
+        <ChatReplyBox>
+            Hey
+        </ChatReplyBox>
+        <ChatReplyBox user="admin">Hey! What's up?</ChatReplyBox>
       </div>
       <div className=" z-1 absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
         <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
@@ -184,22 +193,12 @@ const Chatbox = () => {
             <svg
               className="w-3 h-3"
               fill="#000000"
-              height="800px"
-              width="800px"
-              version="1.1"
-              id="Capa_1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 60 60"
-              xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M54,2H6C2.748,2,0,4.748,0,8v33c0,3.252,2.748,6,6,6h8v10c0,0.413,0.254,0.784,0.64,0.933C14.757,57.978,14.879,58,15,58
-	c0.276,0,0.547-0.115,0.74-0.327L25.442,47H54c3.252,0,6-2.748,6-6V8C60,4.748,57.252,2,54,2z M12,15h15c0.553,0,1,0.448,1,1
-	s-0.447,1-1,1H12c-0.553,0-1-0.448-1-1S11.447,15,12,15z M46,33H12c-0.553,0-1-0.448-1-1s0.447-1,1-1h34c0.553,0,1,0.448,1,1
-	S46.553,33,46,33z M46,25H12c-0.553,0-1-0.448-1-1s0.447-1,1-1h34c0.553,0,1,0.448,1,1S46.553,25,46,25z"
-              />
+              <path d="M54,2H6C2.748,2,0,4.748,0,8v33c0,3.252,2.748,6,6,6h8v10c0,0.413,0.254,0.784,0.64,0.933C14.757,57.978,14.879,58,15,58 c0.276,0,0.547-0.115,0.74-0.327L25.442,47H54c3.252,0,6-2.748,6-6V8C60,4.748,57.252,2,54,2z M12,15h15c0.553,0,1,0.448,1,1 s-0.447,1-1,1H12c-0.553,0-1-0.448-1-1S11.447,15,12,15z M46,33H12c-0.553,0-1-0.448-1-1s0.447-1,1-1h34c0.553,0,1,0.448,1,1 S46.553,33,46,33z M46,25H12c-0.553,0-1-0.448-1-1s0.447-1,1-1h34c0.553,0,1,0.448,1,1S46.553,25,46,25z" />
             </svg>
+
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold">Chat</span>
               <svg
@@ -224,6 +223,8 @@ const Chatbox = () => {
           </div>
           <div className="">
             <textarea
+              value={chatboxValue}
+              onChange={handleOnChange}
               ref={textareaRef}
               rows="1"
               className=" min-h-16 w-full resize-none overflow-hidden focus:outline-none placeholder:text-sm "
@@ -237,25 +238,12 @@ const Chatbox = () => {
               <svg
                 className="w-4 h-4"
                 fill="#000000"
-                height="800px"
-                width="800px"
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 463.273 463.273"
-                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <g>
-                  <g>
-                    <path
-                      d="M313.874,0H149.398c-16.28,0-29.477,13.197-29.476,29.477v422.368c0,4.532,2.679,8.637,6.827,10.461
-			c4.148,1.824,8.983,1.025,12.324-2.038l84.84-77.788c4.369-4.006,11.076-4.006,15.446,0l84.84,77.788
-			c3.34,3.063,8.175,3.863,12.324,2.038s6.827-5.929,6.827-10.461h0.001V29.477C343.351,13.197,330.154,0,313.874,0z"
-                    />
-                  </g>
-                </g>
+                <path d="M313.874,0H149.398c-16.28,0-29.477,13.197-29.476,29.477v422.368c0,4.532,2.679,8.637,6.827,10.461 c4.148,1.824,8.983,1.025,12.324-2.038l84.84-77.788c4.369-4.006,11.076-4.006,15.446,0l84.84,77.788 c3.34,3.063,8.175,3.863,12.324,2.038s6.827-5.929,6.827-10.461h0.001V29.477C343.351,13.197,330.154,0,313.874,0z" />
               </svg>
+
               <svg
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
@@ -281,10 +269,10 @@ const Chatbox = () => {
                 />
               </svg>
             </div>
-            <div className="flex divide-x-2 rounded-4xl items-center py-2 px-4 border-2 divide-gray-300">
-              <button className="px-2 text-gray-500 font-bold">Send</button>
+            <button disabled={chatboxValue.trim() == ''} className="disabled:cursor-not-allowed cursor-pointer disabled:pointer-events-none disabled:bg-white disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
+              <div className="px-2 pr-3  font-bold">Send</div>
               <svg
-                className=" ml-2 w-4 h-4"
+                className={`ml-2 w-4 h-4 transition-all duration-200 ease-out ${chatboxValue.trim() == '' ? 'fill-gray-500' : 'fill-white'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace="preserve"
                 width="512"
@@ -301,7 +289,7 @@ const Chatbox = () => {
                   d="M12.08 70.78c-16.17-16.24-16.09-42.54.15-58.7 16.25-16.17 42.54-16.09 58.71.15L256 197.76 441.06 12.23c16.17-16.24 42.46-16.32 58.71-.15 16.24 16.16 16.32 42.46.15 58.7L285.27 285.96c-16.24 16.17-42.54 16.09-58.7-.15L12.08 70.78z"
                 />
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
