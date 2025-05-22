@@ -1,4 +1,4 @@
-const ChatReplyBox = ({children, user}) => {
+const CustomerChatReplyComponent = ({children, user}) => {
     return <div className={`relative px-2 mx-8 flex ${user == 'admin' ? 'justify-end' : 'justify-start'}`}>
         <div className={`w-fit p-4 rounded-xl ${user == 'admin' ? 'bg-indigo-200' : 'bg-gray-200'}`}>
             <div >{children}</div>
@@ -8,4 +8,4 @@ const ChatReplyBox = ({children, user}) => {
     </div>
 }
 
-export default ChatReplyBox
+export default CustomerChatReplyComponent

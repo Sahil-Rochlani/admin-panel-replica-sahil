@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import ChatReplyBox from "./ChatReplyBox";
+import CustomerChatReplyComponent from "./CustomerChatReplyComponent";
 
-const Chatbox = () => {
+const CustomerChatPanel = () => {
     const [chatboxValue, setChatBoxValue] = useState('')
   const textareaRef = useRef(null);
 
@@ -101,7 +101,7 @@ const Chatbox = () => {
         </div>
       </div>
       <div className="pt-4 h-13/20 z-0 overflow-y-auto space-y-6 no-scrollbar">
-        <ChatReplyBox user="admin">
+        <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -109,8 +109,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -118,8 +118,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox user="admin">
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -127,8 +127,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -136,8 +136,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox user="admin">
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -145,8 +145,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -154,8 +154,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox user="admin">
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -163,8 +163,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -172,8 +172,8 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox user="admin">
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent user="admin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -181,11 +181,11 @@ const Chatbox = () => {
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </ChatReplyBox>
-        <ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent>
             Hey
-        </ChatReplyBox>
-        <ChatReplyBox user="admin">Hey! What's up?</ChatReplyBox>
+        </CustomerChatReplyComponent>
+        <CustomerChatReplyComponent user="admin">Hey! What's up?</CustomerChatReplyComponent>
       </div>
       <div className=" z-1 absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
         <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
@@ -269,7 +269,8 @@ const Chatbox = () => {
                 />
               </svg>
             </div>
-            <button disabled={chatboxValue.trim() == ''} className="disabled:cursor-not-allowed cursor-pointer disabled:pointer-events-none disabled:bg-white disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
+           <div className={`${chatboxValue.trim() == '' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+           <button disabled={chatboxValue.trim() == ''} className="cursor-pointer disabled:pointer-events-none disabled:bg-gray-200 disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
               <div className="px-2 pr-3  font-bold">Send</div>
               <svg
                 className={`ml-2 w-4 h-4 transition-all duration-200 ease-out ${chatboxValue.trim() == '' ? 'fill-gray-500' : 'fill-white'}`}
@@ -290,6 +291,7 @@ const Chatbox = () => {
                 />
               </svg>
             </button>
+           </div>
           </div>
         </div>
       </div>
@@ -297,4 +299,4 @@ const Chatbox = () => {
   );
 };
 
-export default Chatbox;
+export default CustomerChatPanel;

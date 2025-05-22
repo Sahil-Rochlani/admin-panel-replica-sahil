@@ -1,7 +1,39 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import AIChatReplyComponent from "./AIChatReplyComponent";
 
 const AIChatPanel = () => {
   const [tab, setTab] = useState(1);
+  const [messages, setMessages] = useState([])
+  const [AIChatBoxValue, setAIChatBoxValue] = useState('')
+  
+  const MessageListRef = useRef(null)
+
+  const handleInputChange = (e) => {
+    const value = e.target.value
+    setAIChatBoxValue(value)
+  }
+
+  const handleKeyDown = (e) => {
+    if(e.key == 'Enter') handleAIChatSend()
+  }
+
+  const handleAIChatSend = () => {
+    const message = AIChatBoxValue
+    setAIChatBoxValue('')
+    setMessages(prev => [...prev, {sender:'admin', message}])
+
+    setTimeout(() => {
+        let message = 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca.'
+        setMessages(prev => [...prev, {sender:'ai', message}])
+    }, 2000)
+
+  }
+
+  useEffect(() => {
+    if(messages.length > 3)
+    MessageListRef.current.scrollTop = MessageListRef.current.scrollHeight
+  },[messages])
+
   return (
     <div className="bg-[#fafafa] w-full relative col-span-3 overflow-y-hidden h-screen ">
       <div className="flex justify-between px-8 border-b-1  border-gray-300">
@@ -72,7 +104,7 @@ const AIChatPanel = () => {
         {tab == 1 && <div
           className={`h-full w-full`}
         >
-          <div className="h-8/10 flex flex-col justify-center items-center">
+          {messages.length == 0 && <div className="h-8/10 flex flex-col justify-center items-center">
             <div className="flex flex-col items-center">
               <svg
                 className="w-8 h-8"
@@ -92,17 +124,30 @@ const AIChatPanel = () => {
                 Ask me anything about this conversation
               </span>
             </div>
-          </div>
-          <div className="absolute bottom-0 left-0 w-full px-4 py-4">
-            <div className="flex items-center justify-center"></div>
+          </div>}
+          {messages.length > 0 && <div ref={MessageListRef} className="h-8/10 flex flex-col overflow-y-auto no-scrollbar">
+                {messages.map((message, index) => (<AIChatReplyComponent key={index} sender={message.sender}>{message.message}</AIChatReplyComponent>))}
+                
+            </div>
+          }
+          <div className="absolute bg-white bottom-0 left-0 w-full px-4 py-4">
             <div
-              className={`px-2 w-full border-2 border-gray-300 shadow-xl rounded-xl`}
+              className={`relative px-2 w-full border-2 border-gray-200 shadow-xl rounded-xl`}
             >
               <input
-                className="px-2 py-3 placeholder:text-sm"
+                onKeyDown={handleKeyDown}
+                onChange={handleInputChange}
+                value={AIChatBoxValue}
+                className="w-full outline-none px-2 py-3 placeholder:text-sm"
                 type="text"
                 placeholder="Ask a question..."
               />
+              <div onClick={handleAIChatSend} className={`absolute right-2.5 rounded-lg px-1.5 py-0.5 top-1/2 -translate-y-1/2 ${AIChatBoxValue.trim() == '' ? 'cursor-not-allowed bg-gray-200' : 'cursor-pointer bg-black'}`}>
+                <button disabled={AIChatBoxValue.trim() == ''} className="disabled:pointer-events-none outline-none cursor-pointer ">
+                    <svg className={`w-4 h-4 ${AIChatBoxValue.trim() == '' ? 'fill-gray-600' : 'fill-white'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 404 511.5" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd"><path fillRule="nonzero" d="M219.24 72.97l.54 438.53h-34.95l-.55-442.88L25.77 241.96 0 218.39 199.73 0 404 222.89l-25.77 23.58z"/></svg>
+                    {/* <svg className={`w-4 h-4 ${AIChatBoxValue.trim() == '' ? 'fill-gray-600' : 'fill-white'}`} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M486.4 263.509333l-175.7184 175.7184a25.6 25.6 0 1 1-36.181333-36.215466l219.409066-219.409067a25.6 25.6 0 0 1 36.181334 0l219.4432 219.409067a25.6 25.6 0 0 1-36.215467 36.181333L537.6 263.509333v574.293334a25.6 25.6 0 1 1-51.2 0V263.509333z"/></svg> */}
+                </button>
+              </div>
             </div>
           </div>
         </div>}
