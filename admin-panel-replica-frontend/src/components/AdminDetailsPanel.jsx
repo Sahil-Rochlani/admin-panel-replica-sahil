@@ -4,7 +4,7 @@ const AdminDetailsPanel = () => {
             <div className="flex gap-38">
                 <span className="text-gray-400">Assignee</span>
                 <div className="flex items-center gap-2">
-                    <div className="flex text-white  justify-center items-center text-xs w-5 h-5 rounded-full bg-red-800">S</div>
+                    <div className="flex text-white  justify-center items-center text-xs w-5 h-5 rounded-full bg-red-800"><img src="https://img.freepik.com/premium-photo/adult-man-serene-face-expression-studio-portrait_53876-75419.jpg?uid=R197307981&ga=GA1.1.1783492781.1737620913&semt=ais_hybrid&w=740"/></div>
                     <div8>Sahil Rochlani</div8>
                 </div>
             </div>

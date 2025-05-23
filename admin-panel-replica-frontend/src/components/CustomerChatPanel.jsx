@@ -1,12 +1,13 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import CustomerChatReplyComponent from "./CustomerChatReplyComponent";
+import { AdminPanelContext } from "../context/AdminPanelContext";
 
 const CustomerChatPanel = () => {
-    const [chatboxValue, setChatBoxValue] = useState('')
-  const textareaRef = useRef(null);
+    
 
+  const {conversationList, setConversationList, currentConversation, UserChatInputBoxRef, AiChatInputBoxRef, UserChatInputBoxValue, setUserChatInputBoxValue} = useContext(AdminPanelContext)
   const handleInput = () => {
-    const el = textareaRef.current;
+    const el = UserChatInputBoxRef.current;
     if (el) {
       el.style.height = "auto";
       el.style.height = `${el.scrollHeight}px`;
@@ -14,7 +15,7 @@ const CustomerChatPanel = () => {
   }
   const handleOnChange = (e) => {
     const value = e.target.value
-    setChatBoxValue(value)
+    setUserChatInputBoxValue(value)
   }
   return (
     <div className="relative overflow-y-hidden col-span-5 h-screen py-2  border-r-1 border-gray-300">
@@ -223,9 +224,9 @@ const CustomerChatPanel = () => {
           </div>
           <div className="">
             <textarea
-              value={chatboxValue}
+              ref={UserChatInputBoxRef}
+              value={UserChatInputBoxValue}
               onChange={handleOnChange}
-              ref={textareaRef}
               rows="1"
               className=" min-h-16 w-full resize-none overflow-hidden focus:outline-none placeholder:text-sm "
               onInput={handleInput}
@@ -269,11 +270,11 @@ const CustomerChatPanel = () => {
                 />
               </svg>
             </div>
-           <div className={`${chatboxValue.trim() == '' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
-           <button disabled={chatboxValue.trim() == ''} className="cursor-pointer disabled:pointer-events-none disabled:bg-gray-200 disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
+           <div className={`${UserChatInputBoxValue.trim() == '' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+           <button disabled={UserChatInputBoxValue.trim() == ''} className="cursor-pointer disabled:pointer-events-none disabled:bg-gray-200 disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
               <div className="px-2 pr-3  font-bold">Send</div>
               <svg
-                className={`ml-2 w-4 h-4 transition-all duration-200 ease-out ${chatboxValue.trim() == '' ? 'fill-gray-500' : 'fill-white'}`}
+                className={`ml-2 w-4 h-4 transition-all duration-200 ease-out ${UserChatInputBoxValue.trim() == '' ? 'fill-gray-500' : 'fill-white'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace="preserve"
                 width="512"
