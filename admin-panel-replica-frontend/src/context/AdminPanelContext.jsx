@@ -76,12 +76,14 @@ export function AdminPanelProvider({children}){
       const AiChatInputBoxRef = useRef(null)
       const [AiChatInputBoxValue, setAiChatInputBoxValue] = useState('')
       const [UserChatInputBoxValue, setUserChatInputBoxValue] = useState('')
+      const [AiOpen, setAiOpen] = useState(false)
+      const [inboxOpen, setInboxOpen] = useState(false)
 
       useEffect(() => {
         setConversationList(prev => prev.map(item => !item.imageUrl ? ({...item, bgColor:getRandomProfileColor()}) : item))
       },[])
 
-      return <AdminPanelContext.Provider value={{conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue}}>
+      return <AdminPanelContext.Provider value={{conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue, AiOpen, setAiOpen, inboxOpen, setInboxOpen}}>
         {children}
       </AdminPanelContext.Provider>
 }

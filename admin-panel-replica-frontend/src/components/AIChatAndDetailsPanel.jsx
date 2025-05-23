@@ -6,7 +6,7 @@ import { AdminPanelContext } from "../context/AdminPanelContext";
 const AIChatAndDetailsPanel = () => {
   const [tab, setTab] = useState(1);
   const [messages, setMessages] = useState([])
-  const {AiChatInputBoxValue, setAiChatInputBoxValue} = useContext(AdminPanelContext)
+  const {AiChatInputBoxValue, setAiChatInputBoxValue, AiOpen, setAiOpen} = useContext(AdminPanelContext)
   const [lastMessageId, setLastMessageId] = useState(null)
   const MessageListRef = useRef(null)
 
@@ -43,8 +43,8 @@ const AIChatAndDetailsPanel = () => {
   },[messages])
 
   return (
-    <div className="bg-[#fafafa] w-full relative col-span-3 overflow-y-hidden h-screen ">
-      <div className="flex justify-between px-8 border-b-1  border-gray-300">
+    <div className={`bg-[#fafafa] w-[100%] md:w-[62.5%] lg:w-[100%] fixed top-0 bottom-0 right-0 z-50 col-span-1 md:col-span-5 lg:relative lg:col-span-3 overflow-y-hidden h-screen transition-all duration-500 ease lg:translate-x-0 ${AiOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className="flex justify-between items-center px-8 border-b-1  border-gray-300">
         <div className="flex items-center gap-6 text-gray-500 font-semibold ">
           <div
             onClick={() => setTab(1)}
@@ -88,7 +88,7 @@ const AIChatAndDetailsPanel = () => {
             Details
           </div>
         </div>
-        <div className="py-4.5">
+        <div onClick={() => setAiOpen(x => !x)} className="p-1.5 hover:bg-gray-200 transition-colors duration-300 ease-out cursor-pointer rounded-lg">
           <svg
             className="w-5 h-5"
             xmlns="http://www.w3.org/2000/svg"
