@@ -1,4 +1,4 @@
-import { createContext, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 
 export const AdminPanelContext = createContext()
 
@@ -27,6 +27,7 @@ export function AdminPanelProvider({children}){
             ,{sender:'user', message:'I returned my order last week. Can you tell me when Ill receive my refund?', timeStamp:new Date().getTime() - 2 * 60 * 1000}
           ],
           visited:false,
+          imageUrl:''
         },
         {
           name:'Lochlan Baxter',
@@ -42,13 +43,43 @@ export function AdminPanelProvider({children}){
             {sender:'user', message:'I tried applying a discount code at checkout, but it didnt work. Can you help me with that?', timeStamp:new Date().getTime() - 45 * 60 * 1000}
           ],
           visited:true,
+          imageUrl:''
         }
       ])
+      const profileBackgroundColors = [
+        'bg-red-500',
+        'bg-orange-500',
+        'bg-amber-500', // A nice warm yellow
+        'bg-yellow-500', // Brighter yellow
+        'bg-lime-600',   // A more vibrant green
+        'bg-green-500',
+        'bg-emerald-600',// A deeper, richer green
+        'bg-teal-500',
+        'bg-cyan-500',
+        'bg-sky-500',
+        'bg-blue-500',
+        'bg-indigo-500',
+        'bg-violet-500',
+        'bg-purple-500',
+        'bg-fuchsia-500',// A bright pink/magenta
+        'bg-pink-500',
+        'bg-rose-500',   // A slightly more muted pink
+      ];
+
+      const getRandomProfileColor = () => {
+          const randomIndex = Math.floor(Math.random() * profileBackgroundColors.length);
+          return profileBackgroundColors[randomIndex];
+      }
+      
       const [currentConversation, setCurrentConversation] = useState(0)
       const UserChatInputBoxRef = useRef(null)
       const AiChatInputBoxRef = useRef(null)
       const [AiChatInputBoxValue, setAiChatInputBoxValue] = useState('')
       const [UserChatInputBoxValue, setUserChatInputBoxValue] = useState('')
+
+      useEffect(() => {
+        setConversationList(prev => prev.map(item => !item.imageUrl ? ({...item, bgColor:getRandomProfileColor()}) : item))
+      },[])
 
       return <AdminPanelContext.Provider value={{conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue}}>
         {children}

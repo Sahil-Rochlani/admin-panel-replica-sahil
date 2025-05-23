@@ -2,38 +2,10 @@ import { useRef } from "react";
 import { getTimeDifference } from "../utils/TimeFormatter";
 
 const InboxCard = ({conversation, onClick, isCurrentConversation}) => {
-    const profileBackgroundColors = [
-        'bg-red-500',
-        'bg-orange-500',
-        'bg-amber-500', // A nice warm yellow
-        'bg-yellow-500', // Brighter yellow
-        'bg-lime-600',   // A more vibrant green
-        'bg-green-500',
-        'bg-emerald-600',// A deeper, richer green
-        'bg-teal-500',
-        'bg-cyan-500',
-        'bg-sky-500',
-        'bg-blue-500',
-        'bg-indigo-500',
-        'bg-violet-500',
-        'bg-purple-500',
-        'bg-fuchsia-500',// A bright pink/magenta
-        'bg-pink-500',
-        'bg-rose-500',   // A slightly more muted pink
-      ];
 
-    const getRandomProfileColor = () => {
-        const randomIndex = Math.floor(Math.random() * profileBackgroundColors.length);
-        return profileBackgroundColors[randomIndex];
-    }
-
-    const profileColorRef = useRef(getRandomProfileColor())
-
-    console.log(conversation.messages.at(-1))
-
-    return <div onClick={onClick} className={`cursor-pointer flex w-full rounded-lg py-2 ${isCurrentConversation ? 'bg-indigo-100' : 'bg-white'} transition-all duraiton-600 ease-out`}>
+    return <div onClick={onClick} className={`cursor-pointer flex w-full rounded-lg py-2 ${isCurrentConversation ? 'bg-indigo-100' : 'bg-white'} transition-colors duraiton-900 ease-out`}>
         
-        <div className={`mx-3 flex justify-center shrink-0 items-center rounded-full  ${conversation.imageUrl ? 'w-7 h-7' : profileColorRef.current + ' px-3 w-7 h-7 text-white text-base text-center'} `}>
+        <div className={`mx-3 flex justify-center shrink-0 items-center rounded-full  ${conversation.imageUrl ? 'w-7 h-7' : conversation.bgColor + ' px-3 w-7 h-7 font-normal text-white text-base text-center'} `}>
             {conversation.imageUrl ? <img className="rounded-full w-7 h-7" src={conversation.imageUrl} /> : conversation.name.at(0)}
         </div>
         <div className="max-w-[80%] xl:w-[100%] ">

@@ -3,7 +3,7 @@ import { AdminPanelContext } from "../context/AdminPanelContext"
 
 const AIChatReplyComponent = ({sender, text}) => {
     const {UserChatInputBoxRef, setUserChatInputBoxValue} = useContext(AdminPanelContext)
-    return <div className="relative  px-2 mx-4 ml-12 my-2">
+    return <div className="relative animate-slide-up px-2 mx-4 ml-12 my-2">
         <div className={`font-semibold text-sm ${sender == 'ai' ? 'pb-2' : '-mb-2'}`}>{sender == 'admin' ? 'You' : 'Fin'}</div>
         <div className={` rounded-xl w-fit ${sender == 'ai' ? 'px-4 py-3 pb-4 bg-gradient-to-br from-[#cbcef4] via-[#ded0eb] to-[#f0d5d7]' : 'px-0 py-2'}`}>
             <div className="text-sm">{text}</div>

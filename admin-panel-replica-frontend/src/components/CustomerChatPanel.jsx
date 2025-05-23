@@ -1,11 +1,10 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import CustomerChatReplyComponent from "./CustomerChatReplyComponent";
 import { AdminPanelContext } from "../context/AdminPanelContext";
 
 const CustomerChatPanel = () => {
-    
-
-  const {conversationList, setConversationList, currentConversation, UserChatInputBoxRef, AiChatInputBoxRef, UserChatInputBoxValue, setUserChatInputBoxValue} = useContext(AdminPanelContext)
+  const {conversationList, setConversationList, currentConversation, UserChatInputBoxRef, UserChatInputBoxValue, setUserChatInputBoxValue} = useContext(AdminPanelContext)
+  const MessageListRef = useRef(null)
   const handleInput = () => {
     const el = UserChatInputBoxRef.current;
     if (el) {
@@ -17,10 +16,29 @@ const CustomerChatPanel = () => {
     const value = e.target.value
     setUserChatInputBoxValue(value)
   }
+  const handleChatSubmit = () => {
+    setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, {
+      sender:'admin',
+      message:UserChatInputBoxValue,
+      timeStamp:new Date().getTime()
+    }]}) : item))
+
+    setTimeout(() => {
+      setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, {
+        sender:'user',
+        message:'This is a dummy reply from the customer.',
+        timeStamp:new Date().getTime()
+      }]}) : item))
+    },2000)
+    setUserChatInputBoxValue('')
+  }
+  useEffect(() => {
+    MessageListRef.current.scrollTop = MessageListRef.current.scrollHeight
+  },[conversationList[currentConversation].messages])
   return (
-    <div className="relative overflow-y-hidden col-span-5 h-screen py-2  border-r-1 border-gray-300">
+    <div className="relative overflow-y-hidden col-span-5 h-screen py-2 scroll-smooth border-r-1 border-gray-300">
       <div className="bg-white w-full flex items-center py-1 justify-between px-6 border-b-1 border-gray-300">
-        <div className="text-2xl font-semibold text-black">Luis Easton</div>
+        <div className="text-2xl font-semibold text-black">{conversationList[currentConversation].name}</div>
         <div className="flex items-center gap-3 justify-end">
           <div className="rounded-lg px-1 py-2">
             <svg
@@ -101,92 +119,8 @@ const CustomerChatPanel = () => {
           </button>
         </div>
       </div>
-      <div className="pt-4 h-19/20 pb-48 scroll-smooth overflow-y-auto space-y-6 no-scrollbar">
-        <CustomerChatReplyComponent user="admin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent user="admin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent user="admin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent user="admin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent user="admin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent>
-            Hey
-        </CustomerChatReplyComponent>
-        <CustomerChatReplyComponent user="admin">Hey! What's up?</CustomerChatReplyComponent>
+      <div ref={MessageListRef} className="pt-4 h-19/20 pb-48 scroll-smooth overflow-y-auto space-y-4 no-scrollbar">
+        {conversationList[currentConversation].messages.map((item, index) => <CustomerChatReplyComponent key={index} sender={item.sender} text={item.message} timeStamp={item.timeStamp} username={conversationList[currentConversation].name} imageUrl={conversationList[currentConversation].imageUrl} bgColor={conversationList[currentConversation].bgColor} />)}
       </div>
       <div className=" z-1 absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
         <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
@@ -271,7 +205,7 @@ const CustomerChatPanel = () => {
               </svg>
             </div>
            <div className={`${UserChatInputBoxValue.trim() == '' ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
-           <button disabled={UserChatInputBoxValue.trim() == ''} className="cursor-pointer disabled:pointer-events-none disabled:bg-gray-200 disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
+           <button onClick={handleChatSubmit} disabled={UserChatInputBoxValue.trim() == ''} className="cursor-pointer disabled:pointer-events-none disabled:bg-gray-200 disabled:text-gray-500 text-white bg-black flex divide-x-2 rounded-4xl items-center py-2 px-4 divide-gray-300 transition-all duration-200 ease-out">
               <div className="px-2 pr-3  font-bold">Send</div>
               <svg
                 className={`ml-2 w-4 h-4 transition-all duration-200 ease-out ${UserChatInputBoxValue.trim() == '' ? 'fill-gray-500' : 'fill-white'}`}
