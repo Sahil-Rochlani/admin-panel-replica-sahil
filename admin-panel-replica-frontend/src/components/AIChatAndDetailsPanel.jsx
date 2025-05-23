@@ -7,7 +7,7 @@ const AIChatAndDetailsPanel = () => {
   const [tab, setTab] = useState(1);
   const [messages, setMessages] = useState([])
   const {AiChatInputBoxValue, setAiChatInputBoxValue} = useContext(AdminPanelContext)
-  
+  const [lastMessageId, setLastMessageId] = useState(null)
   const MessageListRef = useRef(null)
 
   const handleInputChange = (e) => {
@@ -23,10 +23,16 @@ const AIChatAndDetailsPanel = () => {
     const message = AiChatInputBoxValue
     setAiChatInputBoxValue('')
     setMessages(prev => [...prev, {sender:'admin', message}])
+    setLastMessageId(messages.length)
 
     setTimeout(() => {
         let message = 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca.'
         setMessages(prev => [...prev, {sender:'ai', message}])
+        setLastMessageId(messages.length + 1)
+
+        setTimeout(() => {
+          setLastMessageId(null)
+        },450)
     }, 2000)
 
   }
@@ -127,14 +133,14 @@ const AIChatAndDetailsPanel = () => {
               </span>
             </div>
           </div>}
-          {messages.length > 0 && <div ref={MessageListRef} className="scroll-smooth h-19/20 pb-28 flex flex-col overflow-y-auto no-scrollbar">
-                {messages.map((message, index) => (<AIChatReplyComponent key={index} sender={message.sender} text={message.message}></AIChatReplyComponent>))}
+          {messages.length > 0 && <div ref={MessageListRef} className="h-19/20 pb-28 flex flex-col overflow-y-auto no-scrollbar">
+                {messages.map((message, index) => (<AIChatReplyComponent key={index} animate={lastMessageId == index} sender={message.sender} text={message.message}></AIChatReplyComponent>))}
                 
             </div>
           }
-          <div className="absolute bg-white bottom-0 left-0 w-full px-4 py-4">
+          <div className="absolute rounded-xl bg-[linear-gradient(to_right,rgba(203,206,244,0.4),rgba(222,208,235,0.4),rgba(240,213,215,0.4))] bottom-0 left-0 w-full px-4 py-4">
             <div
-              className={`relative px-2 w-full border-2 border-gray-200 shadow-xl rounded-xl`}
+              className={`relative px-2 w-full border-2 bg-[#fafafa] border-gray-200 shadow-2xl rounded-xl`}
             >
               <input
                 onKeyDown={handleKeyDown}

@@ -1,12 +1,13 @@
 import { useContext } from "react"
 import { AdminPanelContext } from "../context/AdminPanelContext"
+import TypeWritterMessage from "./TypeWriterMessage"
 
-const AIChatReplyComponent = ({sender, text}) => {
+const AIChatReplyComponent = ({sender, animate, text}) => {
     const {UserChatInputBoxRef, setUserChatInputBoxValue} = useContext(AdminPanelContext)
-    return <div className="relative animate-slide-up px-2 mx-4 ml-12 my-2">
+    return <div className={`relative ${animate ? 'animate-slide-up' : ''} px-2 mx-4 ml-12 my-2`}>
         <div className={`font-semibold text-sm ${sender == 'ai' ? 'pb-2' : '-mb-2'}`}>{sender == 'admin' ? 'You' : 'Fin'}</div>
         <div className={` rounded-xl w-fit ${sender == 'ai' ? 'px-4 py-3 pb-4 bg-gradient-to-br from-[#cbcef4] via-[#ded0eb] to-[#f0d5d7]' : 'px-0 py-2'}`}>
-            <div className="text-sm">{text}</div>
+            <div className="text-sm">{sender == 'ai' ? <TypeWritterMessage fullText={text} /> : text}</div>
             {sender == 'ai' && <div onClick={() => {
                 const el = UserChatInputBoxRef.current;
                 if (el) {

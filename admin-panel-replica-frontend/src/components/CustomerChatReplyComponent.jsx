@@ -1,8 +1,8 @@
 import { getTimeDifference } from "../utils/TimeFormatter"
 
-const CustomerChatReplyComponent = ({text, sender, timeStamp, username, imageUrl, bgColor}) => {
+const CustomerChatReplyComponent = ({text, sender, animate, timeStamp, username, imageUrl, bgColor}) => {
     
-    return <div className={`relative animate-slide-up px-2 mx-8 flex ${sender == 'admin' ? 'justify-end' : 'justify-start'}`}>
+    return <div className={`relative ${animate ? 'animate-slide-up' : ''} px-2 mx-8 flex ${sender == 'admin' ? 'justify-end' : 'justify-start'}`}>
         <div className={`w-fit px-4 py-3 rounded-xl ${sender == 'admin' ? 'bg-indigo-200' : 'bg-gray-200'}`}>
             <div>{text}</div>
             <div className={`flex ${sender == 'admin' ? 'justify-end' : 'justify-start'} text-sm text-gray-500 mt-1 items-center gap-1`}>{sender == 'admin' ? <span>{`Seen .`}</span> : <img className="w-4 h-4" src="./smiley-chat.png" />}{getTimeDifference(timeStamp)}</div>

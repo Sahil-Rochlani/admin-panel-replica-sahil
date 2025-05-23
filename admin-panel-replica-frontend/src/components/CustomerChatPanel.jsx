@@ -5,6 +5,9 @@ import { AdminPanelContext } from "../context/AdminPanelContext";
 const CustomerChatPanel = () => {
   const {conversationList, setConversationList, currentConversation, UserChatInputBoxRef, UserChatInputBoxValue, setUserChatInputBoxValue} = useContext(AdminPanelContext)
   const MessageListRef = useRef(null)
+  const [lastMessageId, setLastMessageId] = useState(null)
+
+
   const handleInput = () => {
     const el = UserChatInputBoxRef.current;
     if (el) {
@@ -17,18 +20,27 @@ const CustomerChatPanel = () => {
     setUserChatInputBoxValue(value)
   }
   const handleChatSubmit = () => {
-    setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, {
+    const adminMessage = {
       sender:'admin',
       message:UserChatInputBoxValue,
       timeStamp:new Date().getTime()
-    }]}) : item))
+    }
+
+    setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, adminMessage]}) : item))
+    setLastMessageId(adminMessage.timeStamp)
 
     setTimeout(() => {
-      setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, {
+      const userReply = {
         sender:'user',
         message:'This is a dummy reply from the customer.',
         timeStamp:new Date().getTime()
-      }]}) : item))
+      }
+      
+      setConversationList(prev => prev.map((item, index)=> index == currentConversation ? ({...item, messages:[...item.messages, userReply]}) : item))
+      setLastMessageId(userReply.timeStamp)
+      setTimeout(() => {
+        setLastMessageId(null)
+      },450)
     },2000)
     setUserChatInputBoxValue('')
   }
@@ -119,10 +131,10 @@ const CustomerChatPanel = () => {
           </button>
         </div>
       </div>
-      <div ref={MessageListRef} className="pt-4 h-19/20 pb-48 scroll-smooth overflow-y-auto space-y-4 no-scrollbar">
-        {conversationList[currentConversation].messages.map((item, index) => <CustomerChatReplyComponent key={index} sender={item.sender} text={item.message} timeStamp={item.timeStamp} username={conversationList[currentConversation].name} imageUrl={conversationList[currentConversation].imageUrl} bgColor={conversationList[currentConversation].bgColor} />)}
+      <div ref={MessageListRef} className="pt-4 h-19/20 pb-48 overflow-y-auto space-y-4 no-scrollbar">
+        {conversationList[currentConversation].messages.map((item, index) => <CustomerChatReplyComponent key={index} animate={lastMessageId == item.timeStamp} sender={item.sender} text={item.message} timeStamp={item.timeStamp} username={conversationList[currentConversation].name} imageUrl={conversationList[currentConversation].imageUrl} bgColor={conversationList[currentConversation].bgColor} />)}
       </div>
-      <div className=" z-1 absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
+      <div className=" rounded-lg absolute bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
         <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
           <div className="flex py-1 gap-1 items-center ">
             <svg
