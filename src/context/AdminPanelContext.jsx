@@ -53,11 +53,11 @@ export function AdminPanelProvider({children}){
       const profileBackgroundColors = [
         'bg-red-500',
         'bg-orange-500',
-        'bg-amber-500', // A nice warm yellow
-        'bg-yellow-500', // Brighter yellow
-        'bg-lime-600',   // A more vibrant green
+        'bg-amber-500', 
+        'bg-yellow-500', 
+        'bg-lime-600',   
         'bg-green-500',
-        'bg-emerald-600',// A deeper, richer green
+        'bg-emerald-600',
         'bg-teal-500',
         'bg-cyan-500',
         'bg-sky-500',
@@ -65,9 +65,9 @@ export function AdminPanelProvider({children}){
         'bg-indigo-500',
         'bg-violet-500',
         'bg-purple-500',
-        'bg-fuchsia-500',// A bright pink/magenta
+        'bg-fuchsia-500',
         'bg-pink-500',
-        'bg-rose-500',   // A slightly more muted pink
+        'bg-rose-500',   
       ];
 
       const getRandomProfileColor = () => {
