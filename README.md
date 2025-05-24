@@ -35,7 +35,7 @@ This project was created to practice and demonstrate skills in:
 - **Chat Reply Components**: `CustomerChatReplyComponent.jsx` and `AIChatReplyComponent.jsx` render individual chat messages with sender-based styling, animations, and status indicators.
 - **AI Chat and Admin Details Tabs**: `AIChatAndDetailsPanel.jsx` features a sliding sidebar with toggling between AI chat and admin details, including message state and scroll management.
 - **Admin Details Display**: `AdminDetailsPanel.jsx` organizes admin, team, user, and conversation data visually with Tailwind CSS and icons. 
-- **Chatbox UI pinned to the bottom** of each grid section, handling mobile keyboard and browser bars gracefully   
+- **Chatbox UI pinned to the bottom** of Ai and User chat grid section, handling mobile keyboard and browser bars gracefully   
 - Responsive stacked drawer system for layered UI within grid sections  
 - Clean, modular React components with Tailwind CSS utilities  
 - Mobile-friendly design with safe area and viewport height adjustments 
