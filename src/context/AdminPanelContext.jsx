@@ -3,6 +3,10 @@ import { createContext, useEffect, useRef, useState } from "react";
 export const AdminPanelContext = createContext()
 
 export function AdminPanelProvider({children}){
+    const [adminState, setAdminState] = useState({
+      name:'Sahil Rochlani',
+      imageUrl:'https://img.freepik.com/premium-photo/adult-man-serene-face-expression-studio-portrait_53876-75419.jpg?uid=R197307981&ga=GA1.1.1783492781.1737620913&semt=ais_hybrid&w=740'
+    })
     const [conversationList, setConversationList] = useState([
         {
           name:'Skylar Peralta',
@@ -81,9 +85,10 @@ export function AdminPanelProvider({children}){
 
       useEffect(() => {
         setConversationList(prev => prev.map(item => !item.imageUrl ? ({...item, bgColor:getRandomProfileColor()}) : item))
+        setAdminState(prev => !prev.imageUrl ? ({...prev, bgColor:getRandomProfileColor()}) : prev)
       },[])
 
-      return <AdminPanelContext.Provider value={{conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue, AiOpen, setAiOpen, inboxOpen, setInboxOpen}}>
+      return <AdminPanelContext.Provider value={{adminState, setAdminState, conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue, AiOpen, setAiOpen, inboxOpen, setInboxOpen}}>
         {children}
       </AdminPanelContext.Provider>
 }

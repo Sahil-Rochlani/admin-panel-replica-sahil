@@ -48,7 +48,7 @@ const CustomerChatPanel = () => {
     MessageListRef.current.scrollTop = MessageListRef.current.scrollHeight
   },[conversationList[currentConversation].messages])
   return (
-    <div className="relative overflow-y-hidden col-span-5 lg:col-span-4 h-screen py-2 scroll-smooth border-r-1 border-gray-300">
+    <div className="relative overflow-y-hidden col-span-5 lg:col-span-4 h-dvh py-2 scroll-smooth border-r-1 border-gray-300">
       <div className="bg-white w-full flex items-center py-1 justify-between px-6 border-b-1 border-gray-300">
         <div className="flex gap-2 items-center">
           <div onClick={() => setInboxOpen(x => !x)} className="rounded-full p-1.5 hover:bg-gray-200 transition-colors duration-300 ease-out cursor-pointer"><svg className={`block md:hidden w-5 h-5 -rotate-90`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 404 511.5" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd"><path fillRule="nonzero" d="M219.24 72.97l.54 438.53h-34.95l-.55-442.88L25.77 241.96 0 218.39 199.73 0 404 222.89l-25.77 23.58z"/></svg></div>
