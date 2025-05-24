@@ -43,7 +43,7 @@ const AIChatAndDetailsPanel = () => {
   },[messages])
 
   return (
-    <div className={`bg-[#fafafa] w-[100%] md:w-[62.5%] lg:w-[100%] fixed top-0 bottom-0 right-0 z-50 col-span-1 md:col-span-5 lg:relative lg:col-span-3 overflow-y-hidden h-dvh transition-all duration-500 ease lg:translate-x-0 ${AiOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+    <div className={`bg-[#fafafa] dark:bg-[#fafafa] w-[100%] md:w-[62.5%] lg:w-[100%] fixed top-0 bottom-0 right-0 z-50 col-span-1 md:col-span-5 lg:relative lg:col-span-3 overflow-y-hidden h-dvh transition-all duration-500 ease lg:translate-x-0 ${AiOpen ? 'translate-x-0' : 'translate-x-full'}`}>
       <div className="flex justify-between items-center px-8 border-b-1  border-gray-300">
         <div className="flex items-center gap-6 text-gray-500 font-semibold ">
           <div

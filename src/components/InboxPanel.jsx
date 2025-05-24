@@ -4,8 +4,8 @@ import { AdminPanelContext } from "../context/AdminPanelContext"
 
 const InboxPanel = () => {
     const {conversationList, setConversationList, currentConversation, setCurrentConversation, inboxOpen, setInboxOpen} = useContext(AdminPanelContext)
-    return <div className={`fixed w-full bg-white top-0 bottom-0 left-0 z-50 md:relative h-dvh grid-col-1 md:col-span-3 lg:col-span-2 py-2 border-r-1 border-gray-300 transition-all duration-500 ease md:translate-x-0 ${inboxOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="bg-white w-full py-2">
+    return <div className={`fixed w-full dark:bg-white bg-white top-0 bottom-0 left-0 z-50 md:relative h-dvh grid-col-1 md:col-span-3 lg:col-span-2 py-2 border-r-1 border-gray-300 transition-all duration-500 ease md:translate-x-0 ${inboxOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="dark:bg-white bg-white w-full py-2">
             <div className="px-6 text-2xl font-semibold text-black pb-2 mb-8 border-b-1 border-gray-300">Your inbox</div>
             <div className="flex flex-row justify-between lg:items-center  lg:flex-col lg:gap-4 xl:gap-0 xl:flex-row xl:justify-between px-6 ">
                 <div className="text-base flex items-center gap-2 xl:gap-2">
