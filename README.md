@@ -17,6 +17,7 @@ This project replicates the layout and functionality of real-world admin dashboa
 - [📦 Installation & Setup](#-installation--setup)  
 - [Usage](#usage)  
 - [🔗 Deployment](#-deployment)  
+- [🚧 Future Work](#future-work)
 
 ---
 
@@ -99,7 +100,7 @@ This project taught me a lot about modern frontend development workflows and UI 
 - Handling nested absolute positioning within relative parent containers  
 - Managing mobile viewport height changes with `h-dvh` instead of `h-screen`  
 - Using `pb-[env(safe-area-inset-bottom)]` to account for mobile safe areas  
-- Building a stacked drawer system responsive to different grid sections  
+- Implemented sliding drawer responsive design — a powerful technique to make grid-based layouts adapt smoothly on mobile devices by toggling translate-x properties and leveraging Tailwind CSS transitions.
   - This sliding drawer technique allows grid-based layouts to adapt smoothly on mobile devices by transforming fixed or complex grid columns into interactive sliding panels. It helps maintain functionality and accessibility while optimizing screen real estate on small devices, enhancing user experience without sacrificing design integrity. 
 
 ### Animation & Interactivity
@@ -165,6 +166,49 @@ This project taught me a lot about modern frontend development workflows and UI 
 ## 🔗 Deployment
 
 The project is deployed on **Vercel**. Make sure to push the entire updated folder structure including `package.json` and `vite.config.js` for successful builds.
+
+---
+
+## 🚧 Future Work
+
+- **Full Backend & Database Integration:**  
+  Replace the current simulated data with a real backend API connected to a database (e.g., MongoDB, PostgreSQL) to store and manage conversations, user details, and messages persistently.
+
+- **AI Integration for Chat:**  
+  Integrate AI-based features such as automated replies, message sentiment analysis, or smart suggestions using AI models (e.g., OpenAI GPT) to enhance user experience.
+
+- **Improve Accessibility:**  
+  Enhance keyboard navigation and screen reader support for better accessibility compliance.
+
+- **Pagination or Virtualized List:**  
+  For very large conversation lists, implement pagination or virtualization to improve performance.
+
+- **Search and Filter:**  
+  Add a search bar or filters to easily find conversations by name, status, or date.
+
+- **Real-time Updates:**  
+  Integrate WebSocket or similar technologies to update the conversation list and chat messages in real-time.
+
+- **Conversation Sorting:**  
+  Allow users to sort conversations by last activity, priority, or unread status.
+
+- **Animations and Transitions:**  
+  Smooth the panel slide-in/out animation and add visual feedback on interaction for better UX.
+
+- **Message Previews:**  
+  Show a preview snippet of the latest message in each conversation card.
+
+- **Mobile Optimization:**  
+  Further refine responsiveness and gesture support (e.g., swipe to close inbox).
+
+- **Conversation Archiving:**  
+  Add the ability to archive or delete conversations from the inbox.
+
+- **Dark Mode:**  
+  Provide a dark theme option for comfortable viewing in low-light environments.
+
+- **User Presence Indicators:**  
+  Show online/offline status of conversation participants.
 
 ---
 
