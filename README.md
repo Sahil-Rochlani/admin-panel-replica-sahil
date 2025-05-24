@@ -26,7 +26,6 @@ This project was created to practice and demonstrate skills in:
 ## ✨ Features
 
 - **Three-column grid layout** mimicking a real admin dashboard  
-- Each grid section acts as an independent container with its own content and chatbox  
 - **Global State Management**: Uses React Context (`AdminPanelContext.jsx`) to share admin profile, conversations, chat inputs, and panel visibility states across components.
 - **Dynamic Chat Conversations**: Supports multi-conversation handling with unread message badges, last message previews, and timestamp formatting.
 - **Typewriter Text Animation**: The `TypeWritterMessage.jsx` component provides animated typing effect for AI responses, enhancing UI interactivity.
