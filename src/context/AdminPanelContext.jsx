@@ -77,7 +77,7 @@ export function AdminPanelProvider({children}){
       const [AiChatInputBoxValue, setAiChatInputBoxValue] = useState('')
       const [UserChatInputBoxValue, setUserChatInputBoxValue] = useState('')
       const [AiOpen, setAiOpen] = useState(false)
-      const [inboxOpen, setInboxOpen] = useState(false)
+      const [inboxOpen, setInboxOpen] = useState(true)
 
       useEffect(() => {
         setConversationList(prev => prev.map(item => !item.imageUrl ? ({...item, bgColor:getRandomProfileColor()}) : item))
