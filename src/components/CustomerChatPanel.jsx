@@ -153,7 +153,7 @@ const CustomerChatPanel = () => {
       <div ref={MessageListRef} className="pt-4 h-19/20 pb-48 overflow-y-auto space-y-4 no-scrollbar">
         {conversationList[currentConversation].messages.map((item, index) => <CustomerChatReplyComponent key={index} animate={lastMessageId == item.timeStamp} sender={item.sender} text={item.message} timeStamp={item.timeStamp} username={conversationList[currentConversation].name} imageUrl={conversationList[currentConversation].imageUrl} bgColor={conversationList[currentConversation].bgColor} />)}
       </div>
-      <div className=" rounded-lg absolute pb-[env(safe-area-inset-bottom)] bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
+      <div className=" rounded-lg absolute pb-[env(safe-area-inset-bottom) + 4] bottom-0 left-0 px-4 py-4 pt-0 w-full bg-white ">
         <div className="px-4 py-2 rounded-lg  shadow-2xl border-1 border-gray-200 ">
           <div className="flex py-1 gap-1 items-center ">
             <svg

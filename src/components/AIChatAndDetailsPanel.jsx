@@ -138,7 +138,7 @@ const AIChatAndDetailsPanel = () => {
                 
             </div>
           }
-          <div className="absolute pb-[env(safe-area-inset-bottom)] rounded-xl bg-[linear-gradient(to_right,rgba(203,206,244,0.4),rgba(222,208,235,0.4),rgba(240,213,215,0.4))] bottom-0 left-0 w-full px-4 py-4">
+          <div className="absolute pb-[env(safe-area-inset-bottom) + 4] rounded-xl bg-[linear-gradient(to_right,rgba(203,206,244,0.4),rgba(222,208,235,0.4),rgba(240,213,215,0.4))] bottom-0 left-0 w-full px-4 py-4">
             <div
               className={`relative px-2 w-full border-2 bg-[#fafafa] border-gray-200 shadow-2xl rounded-xl`}
             >

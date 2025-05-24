@@ -1,12 +1,19 @@
+// Import necessary React hooks and createContext function
 import { createContext, useEffect, useRef, useState } from "react";
 
+// Create a Context object for the Admin Panel to share global state
 export const AdminPanelContext = createContext()
 
+// Provider component that wraps the app and provides context values to children
 export function AdminPanelProvider({children}){
-    const [adminState, setAdminState] = useState({
+    // State holding admin user details like name and profile image URL
+    const [adminDetails, setadminDetails] = useState({
       name:'Sahil Rochlani',
       imageUrl:'https://img.freepik.com/premium-photo/adult-man-serene-face-expression-studio-portrait_53876-75419.jpg?uid=R197307981&ga=GA1.1.1783492781.1737620913&semt=ais_hybrid&w=740'
     })
+
+    // State for the list of conversations, each having name, messages, visited flag, and optional imageUrl
+    // Each message contains sender type, message text, and timestamp (milliseconds)
     const [conversationList, setConversationList] = useState([
         {
           name:'Skylar Peralta',
@@ -85,10 +92,10 @@ export function AdminPanelProvider({children}){
 
       useEffect(() => {
         setConversationList(prev => prev.map(item => !item.imageUrl ? ({...item, bgColor:getRandomProfileColor()}) : item))
-        setAdminState(prev => !prev.imageUrl ? ({...prev, bgColor:getRandomProfileColor()}) : prev)
+        setadminDetails(prev => !prev.imageUrl ? ({...prev, bgColor:getRandomProfileColor()}) : prev)
       },[])
 
-      return <AdminPanelContext.Provider value={{adminState, setAdminState, conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue, AiOpen, setAiOpen, inboxOpen, setInboxOpen}}>
+      return <AdminPanelContext.Provider value={{adminDetails, setadminDetails, conversationList, setConversationList, currentConversation, setCurrentConversation, UserChatInputBoxRef, AiChatInputBoxRef, AiChatInputBoxValue, setAiChatInputBoxValue, UserChatInputBoxValue, setUserChatInputBoxValue, AiOpen, setAiOpen, inboxOpen, setInboxOpen}}>
         {children}
       </AdminPanelContext.Provider>
 }

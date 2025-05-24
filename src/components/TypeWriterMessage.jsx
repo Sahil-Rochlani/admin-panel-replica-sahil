@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 const TypeWritterMessage = ({fullText, delay = 10}) => {
-    // console.log(fulltex)
+    // State to hold the part of the text currently displayed
     const [displayedText, setDisplayedText] = useState('')
-    console.log(fullText)
+
     useEffect(() => {
         let index = 0;
         const interval = setInterval(() => {
