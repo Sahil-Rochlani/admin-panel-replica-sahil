@@ -62,7 +62,7 @@ This project was created to practice and demonstrate skills in:
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 - **AdminPanelContext.jsx:** React context managing global state like admin info, conversations, and UI toggles.
 - **TypeWriterMessage.jsx:** Component for animated typewriter effect in AI chat replies.
